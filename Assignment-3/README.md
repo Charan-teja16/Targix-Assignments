@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+```markdown
+# Quiz App — React + Context API + styled-components
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A multi-topic quiz application demonstrating global state management using React Context API and dynamic, theme-driven styling via styled-components. The UI embraces a futuristic neon/glass aesthetic with icons, accessibility considerations, and responsive layout.
 
-## Available Scripts
+## What It Does
+- Lets users switch between Python, C++, and Java quizzes.
+- Navigates through 10 questions per topic with Prev/Next controls.
+- Tracks per-question selections and total score globally.
+- Allows clearing the current answer and submitting to view the score.
 
-In the project directory, you can run:
+## Highlights
+- Context-powered global state for answers and selections.
+- Reducer-driven question navigation with guardrails (1–10).
+- Styled-components theming with global styles, glass panels, and neon accents.
+- Dynamic styling based on state:
+  - Active tab highlighting
+  - Disabled buttons when at bounds
+  - Selected option glow and right-aligned tick
+- Icons for language tabs and actions to enhance clarity and aesthetics.
+- Responsive, space-efficient layout that fits a single page comfortably.
 
-### `npm start`
+## Architecture Overview
+- `App.jsx`: Root provider for `ScoreContext`, language tabs, and quiz routing.
+- `Quiz.jsx`: Header, metadata (current question), actions (Prev/Next/Clear/Submit).
+- `DisplayQuestions.jsx`: Renders the current question with radio options.
+- `Change_Question.jsx`: Reducer for `prev`, `next`, and `new` actions.
+- `Questions.jsx`: Static data for Python, C++, and Java quizzes.
+- `styled.js`: Theme tokens, global styles, and all styled UI components.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## State Management
+- `ScoreContext`: `{ ans: number[10], select: (string|null)[10] }`
+  - `ans[i]` = 1 if correct, 0 otherwise
+  - `select[i]` stores the chosen option for the i-th question
+- `useReducer` manages the current question index (`Qno`) with safe bounds.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## UI/UX Details
+- Tabs with icons for Python, C++, Java.
+- Glassy quiz panel with subtle neon borders and depth.
+- Clear sectioning: header (title + progress), question card, actions row.
+- Selected option shows a tick aligned on the right.
+- Keyboard- and screen-reader-friendly via native radios and ARIA for tabs.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
