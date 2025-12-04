@@ -21,5 +21,3 @@ Open your browser and you're ready to go! ✨
 React • Ant Design • React Router • Axios
 
 ---
-
-Made with ❤️
